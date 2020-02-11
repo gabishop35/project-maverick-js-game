@@ -1,0 +1,9 @@
+* {
+    border-style: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    background-color: rgb(255, 98, 216);
+}
