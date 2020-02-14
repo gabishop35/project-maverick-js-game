@@ -1,7 +1,6 @@
 const Keyboarder = {
   keyState: {},
   isDown: function (keyCode) {
-    console.log('hello')
     return this.keyState[keyCode] === true
   },
   on: function (keyCode, callback) {
