@@ -56,7 +56,7 @@ class Player {
     // this.image = new Image()
     // this.image.src = imageSrc
     this.game = game
-    this.size = { x: 15, y: 15 }
+    this.size = { x: 20, y: 20 }
     this.center = { x: gameSize.x / 2, y: gameSize.y / 1.5 }
     this.keyboarder = Keyboarder
     // Player.src = '/Users/geoffbishop/Momentum/build-a-game-gabishop35/jet.png'
@@ -85,11 +85,11 @@ class Player {
     if (this.center.x < 0) {
       this.center.x = 0
     }
-    if (this.center.x > 600) {
-      this.center.x = 600
+    if (this.center.x > 580) {
+      this.center.x = 580
     }
-    if (this.center.y > 600) {
-      this.center.y = 600
+    if (this.center.y > 580) {
+      this.center.y = 580
     }
     if (this.center.y < 0) {
       this.center.y = 0
@@ -101,13 +101,13 @@ class Enemy {
   constructor (game, center) {
     this.game = game
     this.center = center
-    this.size = { x: 15, y: 15 }
+    this.size = { x: 10, y: 10 }
     this.patrolY = 0
     this.speedY = 1
   }
 
   update () {
-    if (this.patrolY < -10 || this.patrolY > 580) {
+    if (this.patrolY < -10 || this.patrolY > 560) {
       this.speedY = -this.speedY
     }
     this.center.y += this.speedY
@@ -118,7 +118,7 @@ class Enemy {
 function createEnemy (game) {
   const enemy = []
   for (let i = 0; i < 300; i++) {
-    const x = Math.random() * 600
+    const x = Math.random() * 580
     // const y =
     const y = Math.random() * 200
 
