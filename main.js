@@ -2,7 +2,9 @@
 // make player move left and right
 // make player show up at bottom of Canvas
 // let myMusic
-const jetPng = 'jet.png'
+const jetPng = new Image()
+jetPng.src = 'jet.png'
+
 class Game {
   constructor () {
     const canvas = document.querySelector('#game')
@@ -39,9 +41,13 @@ class Game {
   draw (screen, gameSize) {
     screen.clearRect(0, 0, gameSize.x, gameSize.y)
     for (let i = 0; i < this.bodies.length; i++) {
+      // if (this.bodies[i].sprite === 0) {
       drawRect(screen, this.bodies[i])
+      //     } else if (this.bodies[i].sprite === 1) {
+      //       screen.drawImage(jetPng, 0, 0, jetPng.width, jetPng.height, this.bodies[i].x, this.bodies[i].y, this.bodies[i].size.x, this.bodies[i].size.x)
     }
   }
+  // }
 
   addBody (body) {
     const isHit = this.bodies.some(otherBody => hit(body, otherBody) && body.prototype === otherBody.prototype)
@@ -59,6 +65,7 @@ class Player {
     this.size = { x: 20, y: 20 }
     this.center = { x: gameSize.x / 2, y: gameSize.y / 1.5 }
     this.keyboarder = Keyboarder
+    this.sprite = 1
     // Player.src = '/Users/geoffbishop/Momentum/build-a-game-gabishop35/jet.png'
 
     // this.gameImage = this.draw(screen, gameSize)
@@ -104,6 +111,7 @@ class Enemy {
     this.size = { x: 10, y: 10 }
     this.patrolY = 0
     this.speedY = 1
+    this.sprite = 0
   }
 
   update () {
@@ -134,6 +142,7 @@ class Rocket {
     this.center = center
     this.size = { x: 5, y: 2 }
     this.velocity = velocity
+    this.sprite = 0
   }
 
   update () {
