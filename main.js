@@ -1,7 +1,4 @@
-// create player
-// make player move left and right
-// make player show up at bottom of Canvas
-// let myMusic
+
 const jetPng = new Image()
 jetPng.src = 'jet.png'
 
@@ -12,11 +9,11 @@ class Game {
     const gameSize = { x: canvas.width, y: canvas.height }
 
     this.bodies = []
-    this.bodies = this.bodies.concat(new Player(this, gameSize))
     this.bodies = this.bodies.concat(createEnemy(this))
+    this.bodies = this.bodies.concat(new Player(this, gameSize))
 
     const tick = () => {
-      if (this.bodies.length < 20) {
+      if (this.bodies.length < 3) {
         console.log('works')
         this.bodies = this.bodies.concat(createEnemy(this))
       }
@@ -125,11 +122,9 @@ class Enemy {
 
 function createEnemy (game) {
   const enemy = []
-  for (let i = 0; i < 300; i++) {
+  for (let i = 0; i < 3; i++) {
     const x = Math.random() * 580
-    // const y =
-    const y = Math.random() * 200
-
+    const y = Math.random() * -200
     // const x = 30 + (i % 8) * 30
     // const y = 30 + (i % 3) * 30
     enemy.push(new Enemy(game, { x: x, y: y }))
@@ -150,21 +145,6 @@ class Rocket {
     this.center.y += this.velocity.y
   }
 }
-
-// class Keyboarder {
-//   constructor () {
-//     const keyStroke = {}
-//     window.addEventListener('keydown', function (e) {
-//       keyStroke[e.keyCode] = 'true'
-//     })
-
-//     window.addEventListener('keyup', function (e) {
-//       keyStroke[e.keyCode] = 'false'
-//     })
-
-//     this.KEYS = { SPACE: 32, LEFT: 37, RIGHT: 39 }
-//   }
-// }
 
 function drawRect (screen, body) {
   screen.fillRect(body.center.x - body.size.x / 2, body.center.y - body.size.y / 2, body.size.x, body.size.y)
